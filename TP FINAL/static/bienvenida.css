@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --grafito: #393642;
+  --violeta: #7858B4;
+  --purpura: #572364;
+  --negro-violeta: #1E0F35;
+  --texto-claro: #F2EEFA;
+  --texto-mute: #C9BEE0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(120, 88, 180, 0.35), transparent 45%),
+    repeating-radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 14px),
+    var(--negro-violeta);
+  color: var(--texto-claro);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  padding: 32px 24px;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+header {
+  border-bottom: 2px solid var(--grafito);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+header h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 4px 4px 0 var(--purpura);
+}
+
+/* ---------- article / contenido ---------- */
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+article {
+  width: 100%;
+  background: rgba(57, 54, 66, 0.35);
+  border: 2px solid var(--grafito);
+  box-shadow: 6px 6px 0 var(--purpura);
+  padding: 32px 28px;
+}
+
+article h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--violeta);
+  -webkit-text-stroke: 1px var(--texto-claro);
+  margin-bottom: 18px;
+}
+
+article p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--texto-mute);
+  margin-bottom: 14px;
+  max-width: 620px;
+}
+
+article h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 22px;
+}
+
+/* ---------- links tipo boton chunky ---------- */
+
+article h2 a {
+  display: inline-block;
+  background: var(--texto-claro);
+  color: var(--negro-violeta);
+  text-decoration: none;
+  padding: 14px 24px;
+  margin-top: 8px;
+  border: none;
+  box-shadow: 5px 5px 0 var(--violeta);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+article h2 a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--violeta);
+}
+
+article h2 a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--violeta);
+}
+
+
+
+@media (max-width: 480px) {
+  article {
+    padding: 24px 18px;
+  }
+
+  article h2 a {
+    display: block;
+    text-align: center;
+  }
+}

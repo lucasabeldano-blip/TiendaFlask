@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='datos.css') }}">
+
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <main>
+
+        <header>
+
+            <h1>Iniciaste sesión con una cuenta de administrador.</h1>
+
+            <nav class="navbar">
+
+                <div class="logo">MiSitio</div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="{{ url_for('index') }}">
+                            Tienda
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <h1>Bienvenido a #</h1>
+
+        </header>
+
+
+        <section>
+
+            <article>
+
+                <h2>
+                    Funciones CRUD
+                </h2>
+
+                <p>
+                    Desde esta página podés hacer las funciones
+                    CRUD sobre los productos.
+                </p>
+
+                <select id="funcion">
+
+                    <option value="0">Elegí una función...</option>
+
+                    <option value="Crear">
+                        Crear
+                    </option>
+
+                    <option value="Leer">
+                        Leer
+                    </option>
+
+                    <option value="Actualizar">
+                        Actualizar
+                    </option>
+
+                    <option value="Borrar">
+                        Borrar
+                    </option>
+
+                </select>
+
+                <button type="button" id="confirmar">
+                    Confirmar función
+                </button>
+
+            </article>
+
+
+        
+
+            <section id="contenido">
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='Admin.js') }}"></script>
+
+</body>
+
+</html>

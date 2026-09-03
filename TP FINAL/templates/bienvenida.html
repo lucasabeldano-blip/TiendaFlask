@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bienvenida.css') }}">
+    <title>Página de Bienvenida</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Bienvenido a nuestra pagina</h1>
+        </header>
+        
+        <section>
+            <article>
+                <h1>Informacion</h1>
+                <p>Esta página es para un proyecto escolar en el que se nos dio la siguiente consigna</p>
+                <p> Un sitio web completo de una marca con estilo e imagen propios, que debe implementar si o si una API externa. <br>
+                    </p>
+                <p> Nosotros decidimos crear una marca de ropa ficticia, y creamos una pagina para esta marca, donde se puede iniciar sesion para comprar (como cliente) o modificar las bases de datos de la marca (como admin)  
+                    Para acceder a esta informacion podes usar estos links: </p>
+                <h2><a href="{{ url_for('indexlogin') }}">PAGINA PRINCIPAL</a></h2> 
+                <h2><a href="{{ url_for('login') }}">INICIO DE SESION</a></h2> 
+     
+            </article>
+        </section>
+    </main>
+</body>
+</html>

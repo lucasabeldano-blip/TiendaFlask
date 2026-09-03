@@ -1,0 +1,447 @@
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background: #120f17;
+}
+
+
+/* =========================
+   FONDO GHOST FIBERS
+   ========================= */
+
+#ghost-fibers {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header-tienda {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 20px 40px;
+
+    background: rgba(18, 15, 23, 0.72);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom:
+        1px solid rgba(120, 80, 255, 0.25);
+
+    box-shadow:
+        0 5px 30px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* Contenido del header */
+
+.header-contenido {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+}
+
+
+/* =========================
+   LOGO
+   ========================= */
+
+.logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+
+}
+
+
+.logo:hover {
+
+    color: #a68cff;
+
+    text-shadow:
+        0 0 12px rgba(140, 100, 255, 0.7);
+
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.header-contenido h1 {
+
+    margin: 0;
+
+    font-size: 25px;
+
+    text-align: center;
+
+    color: #f5f2ff;
+
+    text-shadow:
+        0 0 15px rgba(120, 80, 255, 0.35);
+
+}
+
+
+.titulo-secundario {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+}
+
+
+.titulo-secundario h2 {
+
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: normal;
+
+    color: #bdb4d5;
+
+}
+
+
+/* =========================
+   NAV
+   ========================= */
+
+.navbar {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 10px;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+.nav-links a {
+
+    display: block;
+
+    padding: 10px 16px;
+
+    color: #ddd6ec;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(130, 100, 220, 0.25);
+
+    background:
+        rgba(80, 50, 130, 0.15);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.nav-links a:hover {
+
+    color: white;
+
+    background:
+        rgba(100, 70, 190, 0.35);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(100, 70, 220, 0.2);
+
+}
+
+
+/* =========================
+   CONTENIDO
+   ========================= */
+
+section {
+
+    min-height: calc(100vh - 150px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+article {
+
+    text-align: center;
+
+}
+
+
+article h2 {
+
+    font-size: 30px;
+
+    color: white;
+
+    text-shadow:
+        0 0 20px rgba(100, 70, 255, 0.5);
+
+}
+
+
+/* =========================
+   DOCK
+   ========================= */
+
+.dock {
+
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 15px;
+
+    padding: 8px 10px;
+
+    background:
+        rgba(18, 15, 23, 0.82);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(120, 90, 220, 0.3);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    z-index: 100;
+
+}
+
+
+/* Botones */
+
+.dock-item {
+
+    position: relative;
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid rgba(120, 90, 220, 0.3);
+
+    border-radius: 11px;
+
+    background:
+        rgba(25, 20, 35, 0.9);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        width 0.15s ease,
+        height 0.15s ease,
+        background 0.2s ease;
+
+}
+
+
+.dock-item:hover {
+
+    background:
+        rgba(70, 45, 120, 0.9);
+
+    border-color:
+        rgba(150, 120, 255, 0.6);
+
+    box-shadow:
+        0 0 15px rgba(110, 80, 255, 0.3);
+
+}
+
+
+/* Iconos */
+
+.dock-icon {
+
+    font-size: 22px;
+
+}
+
+
+/* Etiquetas */
+
+.dock-label {
+
+    position: absolute;
+
+    bottom: 62px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(18, 15, 23, 0.95);
+
+    border:
+        1px solid rgba(120, 90, 220, 0.3);
+
+    color: white;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease;
+
+}
+
+
+.dock-item:hover .dock-label {
+
+    opacity: 1;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .header-tienda {
+
+        padding: 15px 20px;
+
+    }
+
+
+    .header-contenido {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .header-contenido h1 {
+
+        font-size: 20px;
+
+    }
+
+
+    section {
+
+        min-height: calc(100vh - 220px);
+
+    }
+
+}
+
