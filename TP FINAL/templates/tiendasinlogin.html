@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='datos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tienda.css') }}">
     <title>Tienda</title>
 </head>
 <body>
     <main>
         <header>
                     
-            <h1>Bienvenido a nuestra pagina</h1>
             <nav class="navbar">
-                <div class="logo">MiSitio</div>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Nombre de tu Logo">
+                </div>
                 <ul class="nav-links">
-                    <li><a href="login">Inicia Sesion</a></li>
+                    <li><a href="{{ url_for('login') }}">Iniciar sesion con otra cuenta</a></li>
+                    <li><a href="{{ url_for('register') }}">Registrarse</a></li>
+
                 </ul>
             </nav>
 
-            <h1>Bienvenido a #</h1>
+            <h1>Bienvenido a DarkMatter</h1>
         </header>
         
-        <section>
-            <article>
-                
-                
-            </article>
+        <section id="productos">
+    
         </section>
+        
     </main>
+    <script src="{{ url_for('static', filename='Tienda.js') }}"></script>
+
 </body>
-<script src = "Tienda.js"> </script>
 </html>
