@@ -1,3 +1,6 @@
+
+
+
 async function cargarProductos() {
 
     const respuesta = await fetch("/api/productos-tienda");
