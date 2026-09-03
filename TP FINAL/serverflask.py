@@ -294,7 +294,8 @@ def productos_tienda():
 
 @app.route("/api/comprar", methods=["POST"])
 def comprar():
-
+    if "usuario" not in session:
+        return jsonify({"error": "Tenés que iniciar sesión para comprar"}), 401
     datos = request.get_json()
 
     id_producto = datos["id_producto"]

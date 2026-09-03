@@ -58,7 +58,6 @@ async function cargarProductos() {
 
 }
 
-
 async function comprar(id_producto) {
 
     const respuesta = await fetch("/api/comprar", {
@@ -79,6 +78,17 @@ async function comprar(id_producto) {
     const datos = await respuesta.json();
 
 
+    if (respuesta.status === 401) {
+
+        alert("Tenés que iniciar sesión para comprar.");
+
+        window.location.href = "/login";
+
+        return;
+
+    }
+
+
     if (respuesta.ok) {
 
         alert("¡Compra realizada correctamente!");
@@ -95,3 +105,4 @@ async function comprar(id_producto) {
 
 
 cargarProductos();
+
