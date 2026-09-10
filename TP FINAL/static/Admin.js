@@ -2,15 +2,11 @@ const funcion = document.getElementById("funcion");
 const confirmar = document.getElementById("confirmar");
 const contenido = document.getElementById("contenido");
 
-
-
 confirmar.addEventListener("click", Funcion);
-
 
 function Funcion() {
 
     const seleccion = funcion.value;
-
 
     if (seleccion === "Crear") {
 
@@ -18,29 +14,23 @@ function Funcion() {
 
     }
 
-
     else if (seleccion === "Leer") {
 
         Leer();
 
     }
 
-
-    
     else if (seleccion === "Actualizar") {
 
         Actualizar();
 
     }
 
-
-
     else if (seleccion === "Borrar") {
 
         Borrar();
 
     }
-
 
     else {
 
@@ -49,9 +39,6 @@ function Funcion() {
     }
 
 }
-
-
-
 
 function Crear() {
 
@@ -62,54 +49,84 @@ function Crear() {
         <form id="formCrear">
 
             <label>
+
                 Precio:
-                <input type="number" id="precioCrear" required>
+
+                <input 
+                    type="number" 
+                    id="precioCrear" 
+                    required
+                >
+
             </label>
 
             <br><br>
 
             <label>
+
                 Unidades disponibles:
+
                 <input 
                     type="number" 
                     id="unidadesCrear" 
                     required
                 >
+
             </label>
 
             <br><br>
 
             <label>
+
                 Descripción:
+
                 <input 
                     type="text" 
                     id="descripcionCrear" 
                     required
                 >
+
+            </label>
+
+            <br><br>
+
+            <label>
+
+                Imagen:
+
+                <input 
+                    type="file" 
+                    id="imagenCrear"
+                    accept="image/png, image/jpeg, image/webp"
+                    required
+                >
+
             </label>
 
             <br><br>
 
             <button type="submit">
+
                 Crear producto
+
             </button>
 
         </form>
-    `;
 
+    `;
 
     document
         .getElementById("formCrear")
-        .addEventListener("submit", crearProducto);
+        .addEventListener(
+            "submit",
+            crearProducto
+        );
 
 }
-
-
 
 async function crearProducto(event) {
 
     event.preventDefault();
-
 
     const precio =
         document.getElementById("precioCrear").value;
@@ -120,36 +137,53 @@ async function crearProducto(event) {
     const descripcion =
         document.getElementById("descripcionCrear").value;
 
+    const imagen =
+        document.getElementById("imagenCrear").files[0];
 
-    const respuesta = await fetch("/api/productos", {
+    const datosFormulario = new FormData();
 
-        method: "POST",
+    datosFormulario.append(
+        "precio",
+        precio
+    );
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+    datosFormulario.append(
+        "unidades_disponibles",
+        unidades_disponibles
+    );
 
-        body: JSON.stringify({
+    datosFormulario.append(
+        "descripcion",
+        descripcion
+    );
 
-            precio: precio,
+    datosFormulario.append(
+        "imagen",
+        imagen
+    );
 
-            unidades_disponibles: unidades_disponibles,
+    const respuesta = await fetch(
+        "/api/productos",
+        {
+            method: "POST",
+            body: datosFormulario
+        }
+    );
 
-            descripcion: descripcion
-
-        })
-
-    });
-
-
-    const datos = await respuesta.json();
-
+    const datos =
+        await respuesta.json();
 
     if (respuesta.ok) {
 
-        alert("Producto creado correctamente");
+        alert(
+            "Producto creado correctamente"
+        );
 
-        document.getElementById("formCrear").reset();
+        document
+            .getElementById("formCrear")
+            .reset();
+
+        Leer();
 
     }
 
@@ -161,18 +195,13 @@ async function crearProducto(event) {
 
 }
 
-
-
-
 async function Leer() {
 
     const respuesta =
         await fetch("/api/productos");
 
-
     const productos =
         await respuesta.json();
-
 
     if (!respuesta.ok) {
 
@@ -181,7 +210,6 @@ async function Leer() {
         return;
 
     }
-
 
     let html = `
 
@@ -201,6 +229,8 @@ async function Leer() {
 
                     <th>Descripción</th>
 
+                    <th>Imagen</th>
+
                 </tr>
 
             </thead>
@@ -208,7 +238,6 @@ async function Leer() {
             <tbody>
 
     `;
-
 
     productos.forEach(producto => {
 
@@ -232,12 +261,20 @@ async function Leer() {
                     ${producto.descripcion}
                 </td>
 
+                <td>
+
+                    <img 
+                        src="/static/img/productos/${producto.imagen}"
+                        width="100"
+                    >
+
+                </td>
+
             </tr>
 
         `;
 
     });
-
 
     html += `
 
@@ -247,14 +284,9 @@ async function Leer() {
 
     `;
 
-
     contenido.innerHTML = html;
 
 }
-
-
-
-
 
 function Actualizar() {
 
@@ -278,21 +310,18 @@ function Actualizar() {
 
             <br><br>
 
-
             <label>
 
                 Nuevo precio:
 
                 <input 
                     type="number" 
-                    id="precioActualizar" 
-                    required
+                    id="precioActualizar"
                 >
 
             </label>
 
             <br><br>
-
 
             <label>
 
@@ -300,14 +329,12 @@ function Actualizar() {
 
                 <input 
                     type="number" 
-                    id="unidadesActualizar" 
-                    required
+                    id="unidadesActualizar"
                 >
 
             </label>
 
             <br><br>
-
 
             <label>
 
@@ -315,14 +342,26 @@ function Actualizar() {
 
                 <input 
                     type="text" 
-                    id="descripcionActualizar" 
-                    required
+                    id="descripcionActualizar"
                 >
 
             </label>
 
             <br><br>
 
+            <label>
+
+                Nueva imagen:
+
+                <input 
+                    type="file" 
+                    id="imagenActualizar"
+                    accept="image/png, image/jpeg, image/webp"
+                >
+
+            </label>
+
+            <br><br>
 
             <button type="submit">
 
@@ -334,7 +373,6 @@ function Actualizar() {
 
     `;
 
-
     document
         .getElementById("formActualizar")
         .addEventListener(
@@ -344,12 +382,9 @@ function Actualizar() {
 
 }
 
-
-
 async function actualizarProducto(event) {
 
     event.preventDefault();
-
 
     const id_producto =
         document.getElementById("idActualizar").value;
@@ -363,42 +398,60 @@ async function actualizarProducto(event) {
     const descripcion =
         document.getElementById("descripcionActualizar").value;
 
+    const imagen =
+        document.getElementById("imagenActualizar").files[0];
+
+    const datosFormulario = new FormData();
+
+    datosFormulario.append(
+        "id_producto",
+        id_producto
+    );
+
+    datosFormulario.append(
+        "precio",
+        precio
+    );
+
+    datosFormulario.append(
+        "unidades_disponibles",
+        unidades_disponibles
+    );
+
+    datosFormulario.append(
+        "descripcion",
+        descripcion
+    );
+
+    if (imagen) {
+
+        datosFormulario.append(
+            "imagen",
+            imagen
+        );
+
+    }
 
     const respuesta = await fetch(
-            "/api/productos",
-            {
-                method: "PUT",
+        "/api/productos",
+        {
+            method: "PUT",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-
-                id_producto: id_producto,
-
-                precio: precio,
-
-                unidades_disponibles:
-                    unidades_disponibles,
-
-                descripcion: descripcion
-
-            })
+            body: datosFormulario
 
         }
     );
 
-
     const datos =
         await respuesta.json();
-
 
     if (respuesta.ok) {
 
         alert(
             "Producto actualizado correctamente"
         );
+
+        Leer();
 
     }
 
@@ -409,9 +462,6 @@ async function actualizarProducto(event) {
     }
 
 }
-
-
-
 
 function Borrar() {
 
@@ -435,7 +485,6 @@ function Borrar() {
 
             <br><br>
 
-
             <button type="submit">
 
                 Borrar producto
@@ -446,7 +495,6 @@ function Borrar() {
 
     `;
 
-
     document
         .getElementById("formBorrar")
         .addEventListener(
@@ -456,15 +504,12 @@ function Borrar() {
 
 }
 
-
-
 async function borrarProducto(event) {
 
     event.preventDefault();
 
     const id_producto =
         document.getElementById("idBorrar").value;
-
 
     const respuesta = await fetch(
         "/api/productos",
@@ -476,15 +521,16 @@ async function borrarProducto(event) {
             },
 
             body: JSON.stringify({
+
                 id_producto: id_producto
+
             })
+
         }
     );
 
-
     const datos =
         await respuesta.json();
-
 
     if (respuesta.ok) {
 
@@ -492,9 +538,15 @@ async function borrarProducto(event) {
             "Producto eliminado correctamente"
         );
 
-        document.getElementById("formBorrar").reset();
+        document
+            .getElementById("formBorrar")
+            .reset();
 
-    } else {
+        Leer();
+
+    }
+
+    else {
 
         alert(datos.error);
 
