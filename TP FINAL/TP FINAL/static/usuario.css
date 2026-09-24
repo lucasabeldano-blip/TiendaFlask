@@ -1,0 +1,365 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Variables globales: centralizan colores y permiten mantener una paleta coherente. */
+:root {
+    --bg-1: #171320;
+    --bg-2: #221b31;
+    --bg-3: #2d1f3f;
+    --panel: rgba(27, 22, 39, 0.82);
+    --panel-strong: #201a2d;
+    --purple-900: #f0eaff;
+    --purple-800: #d7c9ff;
+    --purple-700: #b99fff;
+    --purple-600: #9a7af7;
+    --purple-500: #8f73ef;
+    --purple-300: #6a4bb0;
+    --text: #f4eefc;
+    --muted: #d8cce9;
+    --line: rgba(174, 149, 255, 0.22);
+    --shadow: rgba(7, 6, 12, 0.38);
+    --success-bg: rgba(40, 116, 78, 0.18);
+    --success-text: #dff9ea;
+    --error-bg: rgba(148, 42, 42, 0.18);
+    --error-text: #ffd8d8;
+}
+
+/* Reinicio básico y modelo de caja para calcular dimensiones de forma predecible. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales: tipografía, color del texto, fondo y espacio exterior. */
+body {
+    min-height: 100vh;
+    padding: 28px 20px;
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(143, 115, 239, 0.22), transparent 30%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+}
+
+/* El ancho máximo mantiene el formulario legible y lo centra en la pantalla. */
+main {
+    width: min(520px, 100%);
+    margin: 0 auto;
+}
+
+/* Agrupa el título y la navegación de la página. */
+header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 18px;
+    color: var(--purple-900);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    background: rgba(17, 12, 24, 0.55);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 12px 22px var(--shadow);
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    color: var(--purple-900);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 12px rgba(155, 127, 255, 0.35);
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: var(--purple-800);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links li a:hover {
+    background: rgba(166, 136, 255, 0.12);
+    color: var(--purple-700);
+    transform: translateY(-1px);
+}
+
+.nav-links li a:hover {
+    background: rgba(122, 92, 201, 0.08);
+    color: var(--purple-700);
+    transform: translateY(-1px);
+}
+
+/* Flexbox centra horizontalmente el artículo que contiene el formulario. */
+section {
+    display: flex;
+    justify-content: center;
+}
+
+/* El artículo funciona como panel: contenido, padding, borde y sombra. */
+article {
+    position: relative;
+    width: 100%;
+    padding: 30px 26px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(30, 24, 42, 0.92), rgba(19, 15, 29, 0.9));
+    box-shadow: 0 18px 40px var(--shadow);
+    overflow: hidden;
+}
+
+article::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--purple-600), var(--purple-500), var(--purple-300));
+}
+
+/* Se reutiliza la misma estructura flexible para los formularios de usuario. */
+#Login,
+#register,
+#cambiarPass {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Cada etiqueta y control se apilan para facilitar la lectura y la entrada de datos. */
+#Login p,
+#register p,
+#cambiarPass p {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+#Login input[type="text"],
+#register input[type="text"],
+#cambiarPass input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid rgba(163, 137, 255, 0.35);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-size: 0.96rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#Login input[type="text"]::placeholder,
+#register input[type="text"]::placeholder,
+#cambiarPass input[type="text"]::placeholder {
+    color: #8370a6;
+}
+
+#Login input[type="text"]:focus,
+#register input[type="text"]:focus,
+#cambiarPass input[type="text"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--purple-600);
+    box-shadow: 0 0 0 4px rgba(122, 92, 201, 0.12);
+}
+
+/* font: inherit mantiene la tipografía común en controles de formulario. */
+button[type="submit"],
+button {
+    margin-top: 4px;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+    color: #fff;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button[type="submit"]:hover,
+button:hover {
+    filter: brightness(1.03);
+    box-shadow: 0 10px 22px rgba(122, 92, 201, 0.22);
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:active,
+button:active {
+    transform: translateY(0);
+}
+
+/* Área de salida para mostrar mensajes de validación o respuesta del servidor. */
+.cuadro-resultado {
+    min-height: 14px;
+    margin-top: 4px;
+    font-size: 0.82rem;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.cuadro-resultado:not(:empty) {
+    padding: 10px 12px;
+    background: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid rgba(157, 45, 45, 0.15);
+}
+
+.cuadro-resultado.exito {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border-color: rgba(31, 108, 67, 0.15);
+}
+
+article h2 {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.81rem;
+    font-weight: 500;
+}
+
+article h2 a {
+    color: var(--purple-700);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+article h2 a:hover {
+    color: var(--purple-900);
+    text-decoration: underline;
+}
+
+footer:not(.site-footer) {
+    margin-top: 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* Diseño responsive: en pantallas pequeñas se reduce el padding y se apila la navegación. */
+@media (max-width: 500px) {
+    body {
+        padding: 18px 14px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    article {
+        padding: 24px 18px;
+    }
+}
+
+.site-footer {
+    width: min(1120px, calc(100% - 48px));
+    margin: 42px auto;
+    padding: 28px 28px 16px;
+    border: 1px solid rgba(130, 100, 220, 0.25);
+    border-radius: 18px;
+    background: rgba(18, 15, 23, 0.82);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.footer-column h3 {
+    margin: 0 0 12px;
+    color: #d9c7ff;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.footer-column p,
+.footer-column li {
+    margin: 0;
+    color: #d2c8ea;
+    line-height: 1.7;
+    font-size: 0.9rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column li + li {
+    margin-top: 4px;
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.socials a {
+    color: #f5f1ff;
+    text-decoration: none;
+    background: rgba(120, 88, 180, 0.18);
+    border: 1px solid rgba(130, 100, 220, 0.2);
+    border-radius: 999px;
+    padding: 5px 10px;
+}
+
+.footer-bottom {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(150, 120, 255, 0.2);
+    text-align: center;
+    color: #bdb4d5;
+    font-size: 0.82rem;
+}
+
+@media (max-width: 500px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer {
+        width: min(100% - 24px, 560px);
+        padding: 24px 18px 12px;
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos básicos y recursos visuales de la página de administración. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <title>Admin</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
+</head>
+
+<body>
+
+    <!-- main agrupa el contenido principal y facilita su organización con CSS. -->
+    <main>
+
+        <header>
+
+            <!-- Encabezado informativo y navegación hacia la tienda. -->
+            <h1>Iniciaste sesión con una cuenta de administrador.</h1>
+
+            <nav class="navbar">
+
+                <div class="logo"></div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="{{ url_for('index') }}">
+                            Tienda
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <h1>Bienvenido a la pagina de administracion</h1>
+
+        </header>
+
+
+        <!-- Área de trabajo: selector de operación y contenido generado dinámicamente. -->
+        <section>
+
+            <article>
+
+                <h2>
+                    Funciones CRUD
+                </h2>
+
+                <p>
+                    Desde esta página podés hacer las funciones
+                    CRUD sobre los productos.
+                </p>
+
+                <!-- Un select representa un conjunto finito de opciones del CRUD. -->
+                <select id="funcion">
+
+                    <option value="0">Elegí una función...</option>
+
+                    <option value="Crear">
+                        Crear
+                    </option>
+
+                    <option value="Leer">
+                        Leer
+                    </option>
+
+                    <option value="Actualizar">
+                        Actualizar
+                    </option>
+
+                    <option value="Borrar">
+                        Borrar
+                    </option>
+
+                </select>
+
+                <!-- El botón dispara en JavaScript la operación elegida. -->
+                <button type="button" id="confirmar">
+                    Confirmar función
+                </button>
+
+            </article>
+
+
+        
+
+            <!-- Este contenedor funciona como punto de actualización de la interfaz. -->
+            <section id="contenido">
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- Información institucional común a las páginas del sitio. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p>DarkMatter es una marca ficticia de ropa urbana con identidad premium, estética minimalista y una propuesta visual inspirada en el streetwear. El logotipo y el isotipo fueron pensados para transmitir una imagen moderna, intensa y tecnológica.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto consiste en desarrollar una app web completa usando HTML, CSS, JavaScript y Python con Flask. Integramos diseño visual, lógica de negocio, autenticación, almacenamiento de datos y una experiencia para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-8901</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+
+    <!-- Se carga al final para que los elementos del DOM ya existan al buscarlos. -->
+    <script src="{{ url_for('static', filename='Admin.js') }}"></script>
+
+</body>
+
+</html>

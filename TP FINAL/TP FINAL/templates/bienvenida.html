@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Define el idioma, la codificación y la adaptación a distintos dispositivos. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- url_for genera la ruta correcta hacia el recurso estático de Flask. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bienvenida.css') }}">
+    <title>Página de Bienvenida</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
+</head>
+<body>
+    <!-- main contiene el contenido principal y mejora la semántica del documento. -->
+    <main>
+        <!-- Encabezado de la página: presenta el propósito general del sitio. -->
+        <header>
+            <h1>Bienvenido a nuestra pagina</h1>
+        </header>
+        
+        <!-- section agrupa el bloque informativo relacionado con la presentación. -->
+        <section>
+            <!-- article representa una unidad de contenido independiente. -->
+            <article>
+                <h1>Informacion</h1>
+                <p>Esta página es para un proyecto escolar en el que se nos dio la siguiente consigna</p>
+                <p> Un sitio web completo de una marca con estilo e imagen propios, que debe implementar si o si una API externa. <br>
+                    </p>
+                <p> Nosotros decidimos crear una marca de ropa ficticia, y creamos una pagina para esta marca, donde se puede iniciar sesion para comprar (como cliente) o modificar las bases de datos de la marca (como admin)  
+                    Para acceder a esta informacion podes usar estos links: </p>
+                <!-- Los enlaces permiten elegir entre navegar como visitante o iniciar sesión. -->
+                <h2><a href="{{ url_for('indexlogin') }}">PAGINA PRINCIPAL</a></h2> 
+                <h2><a href="{{ url_for('login') }}">INICIO DE SESION</a></h2> 
+     
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer reutilizable con información de la marca, proyecto y contacto. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p>DarkMatter es una marca ficticia de ropa urbana con identidad premium, estética minimalista y una propuesta visual inspirada en el streetwear. El logotipo y el isotipo fueron pensados para transmitir una imagen moderna, intensa y tecnológica.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto consiste en desarrollar una app web completa usando HTML, CSS, JavaScript y Python con Flask. Integramos diseño visual, lógica de negocio, autenticación, almacenamiento de datos y una experiencia para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-6767</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+</body>
+</html>

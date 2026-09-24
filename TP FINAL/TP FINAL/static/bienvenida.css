@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Variables centralizadas: evitan repetir valores y facilitan cambiar el tema visual. */
+:root {
+  --bg-1: #120f1a;
+  --bg-2: #1d1728;
+  --panel: rgba(25, 20, 35, 0.82);
+  --panel-soft: rgba(47, 35, 64, 0.7);
+  --violeta-oscuro: #7858b4;
+  --violeta: #8f6de8;
+  --violeta-claro: #c3b1ff;
+  --azul-cyan: #7dd3ff;
+  --texto-claro: #f4efff;
+  --texto-suave: #d7cdf0;
+  --linea: rgba(165, 135, 255, 0.35);
+  --sombra: rgba(10, 9, 19, 0.42);
+}
+
+/* Restablece estilos del navegador y usa el modelo de caja predecible. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fondo, tipografía y espaciado general de toda la página. */
+body {
+  min-height: 100vh;
+  padding: 36px 24px;
+  color: var(--texto-claro);
+  font-family: 'Space Mono', monospace;
+  background:
+    radial-gradient(circle at top right, rgba(125, 211, 255, 0.18), transparent 25%),
+    radial-gradient(circle at 10% 10%, rgba(143, 109, 232, 0.32), transparent 30%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2));
+}
+
+/* Limita el ancho de lectura y centra el contenido horizontalmente. */
+main {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* El borde inferior separa visualmente el encabezado del contenido. */
+header {
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--linea);
+}
+
+header h1 {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(40px, 6vw, 62px);
+  line-height: 0.92;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+ 
+}
+
+/* Flexbox centra el artículo dentro de la sección. */
+section {
+  display: flex;
+  justify-content: center;
+}
+
+/* El artículo funciona como panel visual y aplica el modelo de caja: padding, borde y contenido. */
+article {
+  width: 100%;
+  padding: 32px 28px;
+  background: var(--panel);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  box-shadow: 0 18px 36px var(--sombra);
+}
+
+article h1 {
+  margin-bottom: 18px;
+  color: var(--violeta-claro);
+  font-family: 'Space Mono', monospace;
+  font-size: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+article p {
+  max-width: 620px;
+  margin-bottom: 16px;
+  color: var(--texto-suave);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+article h2 {
+  margin-top: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* El enlace se transforma visualmente en botón, pero mantiene semántica de navegación. */
+article h2 a {
+  display: inline-block;
+  padding: 14px 22px;
+  background: var(--violeta-claro);
+  color: #140d20;
+  text-decoration: none;
+  border-radius: 12px;
+}
+
+/* Pseudoclases: hover y active representan estados de interacción del enlace. */
+article h2 a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 rgba(125, 211, 255, 0.28);
+}
+
+article h2 a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(125, 211, 255, 0.22);
+}
+
+/* El footer usa el mismo ancho máximo del sitio y queda separado del artículo. */
+.site-footer {
+  width: min(1120px, calc(100% - 48px));
+  margin: 42px auto;
+  padding: 28px 28px 16px;
+  border: 1px solid rgba(130, 100, 220, 0.25);
+  border-radius: 18px;
+  background: rgba(18, 15, 23, 0.82);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* CSS Grid distribuye las tres columnas con un algoritmo de filas y columnas. */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer-column h3 {
+  margin: 0 0 12px;
+  color: #d9c7ff;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-column p,
+.footer-column li {
+  margin: 0;
+  color: #d2c8ea;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-column li + li {
+  margin-top: 4px;
+}
+
+/* Flexbox permite que los enlaces sociales se acomoden y salten de línea. */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socials a {
+  color: #f5f1ff;
+  text-decoration: none;
+  background: rgba(120, 88, 180, 0.18);
+  border: 1px solid rgba(130, 100, 220, 0.2);
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+
+.footer-bottom {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(150, 120, 255, 0.2);
+  text-align: center;
+  color: #bdb4d5;
+  font-size: 0.82rem;
+}
+
+/* Media query: adapta tamaños y columnas cuando el viewport es pequeño. */
+@media (max-width: 480px) {
+  body {
+    padding: 24px 16px;
+  }
+
+  article {
+    padding: 24px 18px;
+  }
+
+  article h2 a {
+    display: block;
+    text-align: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    width: min(100% - 24px, 560px);
+    padding: 24px 18px 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-footer {
+    width: min(100% - 24px, 560px);
+    padding: 24px 18px 12px;
+  }
+}

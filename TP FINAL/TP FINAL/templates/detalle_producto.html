@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tienda.css') }}">
+    <title>{{ producto.descripcion }} | DarkMatter</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+</head>
+<body>
+    <main>
+        <header>
+            <nav class="navbar">
+                <a class="isotipo" href="{{ url_for('index') }}" aria-label="Volver a la tienda">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo de la marca">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('login') }}">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+            <h1>Detalle del producto</h1>
+        </header>
+
+        <section class="detalle-producto">
+            <div class="detalle-imagen">
+                <img
+                    class="imagen-producto"
+                    src="{{ url_for('static', filename='img/productos/' + producto.imagen) }}"
+                    alt="{{ producto.descripcion }}"
+                >
+            </div>
+
+            <div class="detalle-informacion">
+                <p class="detalle-etiqueta">DarkMatter / Colección</p>
+                <h2>{{ producto.descripcion }}</h2>
+                <p class="detalle-descripcion">
+                    {{ producto.descripcion_completa }}
+                </p>
+                <p class="detalle-precio">Precio: ${{ producto.precio }}</p>
+                <p class="detalle-stock">Unidades disponibles: {{ producto.unidades_disponibles }}</p>
+
+                <label for="talla">Elegí tu talle</label>
+                <select id="talla" name="talla">
+                    <option value="" selected disabled>Seleccionar talle</option>
+                    <option value="S" {% if producto.unidades_s <= 0 %}disabled{% endif %}>S ({{ producto.unidades_s }} disponibles)</option>
+                    <option value="M" {% if producto.unidades_m <= 0 %}disabled{% endif %}>M ({{ producto.unidades_m }} disponibles)</option>
+                    <option value="L" {% if producto.unidades_l <= 0 %}disabled{% endif %}>L ({{ producto.unidades_l }} disponibles)</option>
+                    <option value="XL" {% if producto.unidades_xl <= 0 %}disabled{% endif %}>XL ({{ producto.unidades_xl }} disponibles)</option>
+                </select>
+
+                <button id="comprar-detalle" type="button" data-producto="{{ producto.id_producto }}">
+                    Comprar producto
+                </button>
+                <p id="mensaje-compra" class="mensaje-compra" role="status"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='detalle_producto.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos, estilos e icono necesarios para representar la página. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- url_for genera la ruta del recurso estático desde Flask. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='usuario.css') }}">
+    <title>Inicio de Sesion</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
+</head>
+<body>
+    <!-- main contiene el flujo principal de autenticación. -->
+    <main>
+        <!-- Encabezado y navegación para volver al índice público. -->
+        <header>
+            <h1>Inicio de Sesion</h1>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('indexlogin') }}">Vuelve a la pagina de indice sin Iniciar sesion</a></li>
+                </ul>
+    </nav>
+</header>
+        
+        <!-- El formulario reúne las credenciales que serán validadas por el servidor. -->
+        <section>
+                <article>
+                    <form id="Login">
+                      <p>
+                        Usuario:
+                        <input type="text" id="usuario" name="usuario" size="40" min = 0 required
+                        placeholder="Inserte su usuario ">
+                        Contraseña:
+                        <input type="text" id="contraseña" name="contraseña" size="40" min = 0 required
+                        placeholder="Inserte su contraseña ">
+                      </select>
+                      <!-- submit activa el evento manejado por Login.js. -->
+                      <button type="submit"> Inicia sesion! </button> 
+                    </form>
+        
+             
+                    
+                    <h2><a href="{{ url_for('register') }}">No tenes cuenta? Registrate aca</a></h2> 
+                    <h2><a href="{{ url_for('cambiarpass') }}">Queres cambiar tu contraseña? Cambiala aca</a></h2> 
+                    
+
+                </article>
+        </section>
+    </main>
+
+    <!-- Información institucional reutilizada en las páginas del sitio. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p>DarkMatter es una marca ficticia de ropa urbana con identidad premium, estética minimalista y una propuesta visual inspirada en el streetwear. El logotipo y el isotipo fueron pensados para transmitir una imagen moderna, intensa y tecnológica.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto consiste en desarrollar una app web completa usando HTML, CSS, JavaScript y Python con Flask. Integramos diseño visual, lógica de negocio, autenticación, almacenamiento de datos y una experiencia para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-8901</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+
+    <!-- Se carga al final para que el formulario ya exista en el DOM. -->
+    <script src="{{ url_for('static', filename='Login.js') }}"></script>
+</body>
+</html>

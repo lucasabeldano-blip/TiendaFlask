@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos y recursos visuales de la página de registro. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Flask genera la ruta correcta para cargar el archivo estático. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='usuario.css') }}">
+    <title>Registro</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
+</head>
+<body>
+    <!-- main agrupa el contenido principal del proceso de registro. -->
+    <main>
+        <!-- Encabezado y enlace de navegación hacia el índice público. -->
+        <header>
+            <h1>Registro</h1>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('indexlogin') }}">Vuelve a la pagina de indice sin Iniciar sesion</a></li>
+                </ul>
+    </nav>
+</header>
+        
+        <!-- El formulario solicita los datos necesarios para crear una cuenta. -->
+        <section>
+                <article>
+                    <form id="register">
+                      <p>
+                        Usuario:
+                        <input type="text" id="usuario" name="usuario" size="40" min = 0 required
+                        placeholder="Inserte su usuario  ">
+                        Contraseña:
+                        <input type="text" id="contraseña" name="contraseña" size="40" min = 0 required
+                        placeholder="Inserte su contraseña">
+                        Confirmar Contraseña:
+                        <input type="text" id="confirmar_contraseña" name="confirmar_contraseña" size="40" min = 0 required
+                        placeholder="Confirmar su contraseña">
+                      </select>
+                      <!-- El envío se procesa en Registrarse.js para evitar recargar la página. -->
+                      <button type="submit">Registrarte!</button>
+                                            <p id="resultado" role="status" aria-live="polite"></p>
+                    </form>
+             
+                     
+                    
+                    <h2><a href="{{ url_for('login') }}">Ya tenes cuenta? Inicia sesion aca</a></h2> 
+                    <h2><a href="{{ url_for('cambiarpass') }}">Queres cambiar tu contraseña? Cambiala aca</a></h2> 
+
+
+                    
+                </article>
+        </section>
+    </main>
+
+    <!-- Footer común con información de la marca y del proyecto. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p>DarkMatter es una marca ficticia de ropa urbana con identidad premium, estética minimalista y una propuesta visual inspirada en el streetwear. El logotipo y el isotipo fueron pensados para transmitir una imagen moderna, intensa y tecnológica.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto consiste en desarrollar una app web completa usando HTML, CSS, JavaScript y Python con Flask. Integramos diseño visual, lógica de negocio, autenticación, almacenamiento de datos y una experiencia para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-8901</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+
+    <!-- El script enlaza el formulario con la lógica de registro. -->
+    <script src="{{ url_for('static', filename='Registrarse.js') }}"></script>
+</body>
+</html>
