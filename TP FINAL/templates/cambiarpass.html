@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos, hoja de estilos e icono compartido por la aplicación. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='marca.css') }}">
+    <!-- Flask genera la URL del recurso estático de forma segura y reutilizable. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='usuario.css') }}">
     <title>Cambio de Contraseña</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
 </head>
 <body>
+    <!-- main organiza el contenido principal y mantiene una estructura semántica. -->
     <main>
+        <!-- Encabezado y navegación para volver al índice sin iniciar sesión. -->
         <header>
-            <h1>Bienvenido a nuestra pagina</h1>
-            <nav class="navbar">
-                <div class="logo">MiSitio</div>
+            <h1>Cambio de Contraseña</h1>
+                <div class="logo"></div>
                 <ul class="nav-links">
                     <li><a href="{{ url_for('indexlogin') }}">Vuelve a la pagina de indice sin Iniciar sesion</a></li>
+                    <!-- Mantiene el acceso al carrito visible durante la navegación. -->
+                    <li><a class="enlace-carrito" href="{{ url_for('ver_carrito') }}"><span aria-hidden="true">🛒</span><span>Carrito</span><span class="contador-carrito" aria-label="{{ cantidad_carrito }} artículos">{{ cantidad_carrito }}</span></a></li>
                 </ul>
     </nav>
 </header>
         
+        <!-- section agrupa la operación de cambio de contraseña. -->
         <section>
+            <!-- El formulario reúne los datos y permite validarlos antes del envío. -->
                 <article>
                     <form id="cambiarPass">
                       <p>
@@ -26,33 +35,54 @@
                         <input type="text" id="usuario" name="usuario" size="40" min = 0 required
                         placeholder="Inserte su usuario  ">
                         Contraseña Actual:
-                        <input type="text" id="contraseña_actual" name="contraseña" size="40" min = 0 required
+                        <input type="password" id="contraseña_actual" name="contraseña" size="40" min = 0 required
                         placeholder="Inserte su contraseña actual">
                         Contraseña Nueva:
-                        <input type="text" id="contraseña_nueva" name="contraseña_nueva" size="40" min = 0 required
+                        <input type="password" id="contraseña_nueva" name="contraseña_nueva" size="40" min = 0 required
                         placeholder="Inserte su contraseña nueva">
                         Confirmar Contraseña:
-                        <input type="text" id="confirmar_contraseña_nueva" name="confirmar_contraseña_nueva" size="40" min = 0 required
+                        <input type="password" id="confirmar_contraseña_nueva" name="confirmar_contraseña_nueva" size="40" min = 0 required
                         placeholder="Confirmar su contraseña nueva">
-                      </select>
+                      <!-- submit activa el evento controlado por Contraseña_Nueva.js. -->
                       <button type="submit">Cambiar contraseña</button>
                     </form>
-                    <div id="resultado" class="cuadro-resultado">
-                        
-                    </div>
+                
                     
                     
                     <h2><a href="{{ url_for('login') }}">Ya tenes cuenta? Inicia sesion aca</a></h2> 
-                    
-                    <div id="resultado" class="cuadro-resultado"></div>
+                   
                 </article>
         </section>
     </main>
-    
+
+    <!-- Pie reutilizable con información institucional y medios de contacto. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p><strong>DarkMatter</strong> es una marca de ropa urbana <em>premium</em>, de estética minimalista y estilo <em>streetwear</em>. Su logotipo e isotipo transmiten una imagen moderna, intensa y tecnológica.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto es una app web completa desarrollada con HTML, CSS, JavaScript, Python y Flask. Incluye diseño visual, lógica de negocio, autenticación, base de datos y paneles para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-8901</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+
+    <!-- El script se carga al final para encontrar el formulario en el DOM. -->
+    <script src="{{ url_for('static', filename='Contraseña_Nueva.js') }}"></script>
 </body>
-    <footer>
-            <p></p>
-            <p></p>
-            </footer>
-            <script src="{{ url_for('static', filename='Contraseña_Nueva.js') }}"></script>
 </html>

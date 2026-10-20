@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tienda.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='categorias.css') }}">
+    <title>Buscar por categoría</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+</head>
+<body>
+    <main>
+        <header>
+            <!-- En esta pantalla, el logo vuelve a la tienda y la lista de categorías se completa dinámicamente. -->
+            <nav class="navbar">
+                <a class="isotipo" href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo de la marca">
+                </a>
+                <ul class="nav-links">
+                    <!-- El enlace global permite revisar el carrito sin abandonar la búsqueda. -->
+                    <li><a class="enlace-carrito" href="{{ url_for('ver_carrito') }}"><span aria-hidden="true">🛒</span><span>Carrito</span><span class="contador-carrito" aria-label="{{ cantidad_carrito }} artículos">{{ cantidad_carrito }}</span></a></li>
+                </ul>
+            </nav>
+            <h1>Buscar por categoría</h1>
+        </header>
+
+        <!-- Sección que muestra todas las categorías disponibles para filtrar productos. -->
+        <section class="buscador-categorias">
+            <div class="encabezado-categorias">
+                <h2>Elegí una categoría</h2>
+                <p>Las opciones se cargan desde las categorías disponibles en la base de datos.</p>
+            </div>
+            <div id="lista-categorias" class="lista-categorias" aria-live="polite">
+                <p>Cargando categorías...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='Categorias.js') }}"></script>
+</body>
+</html>

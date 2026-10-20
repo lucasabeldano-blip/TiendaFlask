@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tienda.css') }}">
+    <title>Carrito | DarkMatter</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+</head>
+<body>
+    <main class="main-carrito">
+        <header>
+            <nav class="navbar">
+                <a class="isotipo" href="{{ url_for('index') }}" aria-label="Volver a la tienda">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo de la marca">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('index') }}">Seguir comprando</a></li>
+                    <!-- El contador usa el total de unidades guardadas para esta sesión. -->
+                    <li><a class="enlace-carrito" href="{{ url_for('ver_carrito') }}" aria-current="page"><span aria-hidden="true">🛒</span><span>Carrito</span><span class="contador-carrito" aria-label="{{ cantidad_carrito }} artículos">{{ cantidad_carrito }}</span></a></li>
+                </ul>
+            </nav>
+            <h1>Tu carrito</h1>
+        </header>
+
+        <section class="vista-carrito" aria-label="Contenido del carrito">
+            <!-- JavaScript carga líneas, precios y cantidades desde la API de Flask. -->
+            <div id="contenido-carrito" aria-live="polite">
+                <p>Cargando el carrito...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Este script consulta el carrito y envía cambios o la confirmación a Flask. -->
+    <script src="{{ url_for('static', filename='carrito.js') }}"></script>
+</body>
+</html>

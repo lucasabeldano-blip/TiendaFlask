@@ -2,25 +2,28 @@
 <html lang="es">
 
 <head>
+    <!-- Metadatos básicos y recursos visuales de la página de administración. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='datos.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
     <title>Admin</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/iso.png') }}">
+
 </head>
 
 <body>
 
+    <!-- main agrupa el contenido principal y facilita su organización con CSS. -->
     <main>
 
         <header>
 
+            <!-- Encabezado informativo y navegación hacia la tienda. -->
             <h1>Iniciaste sesión con una cuenta de administrador.</h1>
 
             <nav class="navbar">
 
-                <div class="logo">MiSitio</div>
+                <div class="logo"></div>
 
                 <ul class="nav-links">
                     <li>
@@ -28,16 +31,19 @@
                             Tienda
                         </a>
                     </li>
+                    <!-- El contador global permite abrir el carrito desde el panel y el resto del sitio. -->
+                    <li><a class="enlace-carrito" href="{{ url_for('ver_carrito') }}"><span aria-hidden="true">🛒</span><span>Carrito</span><span class="contador-carrito" aria-label="{{ cantidad_carrito }} artículos">{{ cantidad_carrito }}</span></a></li>
 
                 </ul>
 
             </nav>
 
-            <h1>Bienvenido a #</h1>
+            <h1>Bienvenido a la pagina de administracion</h1>
 
         </header>
 
 
+        <!-- Área de trabajo: selector de operación y contenido generado dinámicamente. -->
         <section>
 
             <article>
@@ -51,6 +57,7 @@
                     CRUD sobre los productos.
                 </p>
 
+                <!-- Un select representa un conjunto finito de opciones del CRUD. -->
                 <select id="funcion">
 
                     <option value="0">Elegí una función...</option>
@@ -73,6 +80,7 @@
 
                 </select>
 
+                <!-- El botón dispara en JavaScript la operación elegida. -->
                 <button type="button" id="confirmar">
                     Confirmar función
                 </button>
@@ -82,6 +90,7 @@
 
         
 
+            <!-- Este contenedor funciona como punto de actualización de la interfaz. -->
             <section id="contenido">
 
             </section>
@@ -90,7 +99,34 @@
 
     </main>
 
+    <!-- Información institucional común a las páginas del sitio. -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>La marca</h3>
+                <p><strong>DarkMatter</strong> es una marca de ropa urbana <em>premium</em>, de estética minimalista y estilo <em>streetwear</em>. Su logotipo e isotipo transmiten una imagen moderna, intensa y tecnológica.</p>
+            </div>
 
+            <div class="footer-column">
+                <h3>El proyecto</h3>
+                <p>Este proyecto es una app web completa desarrollada con HTML, CSS, JavaScript, Python y Flask. Incluye diseño visual, lógica de negocio, autenticación, base de datos y paneles para clientes y administradores.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 +54 9 11 4567-8901</li>
+                    <li>✉️ hola@darkmatter.com.ar</li>
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li class="socials"><a href="#">X</a> <a href="#">Instagram</a> <a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 DarkMatter · Diseñada para una experiencia de compra premium</div>
+    </footer>
+
+    <!-- Se carga al final para que los elementos del DOM ya existan al buscarlos. -->
     <script src="{{ url_for('static', filename='Admin.js') }}"></script>
 
 </body>

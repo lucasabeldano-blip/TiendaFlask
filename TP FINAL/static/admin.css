@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* ========================================================
+   Paleta y base visual del panel admin
+   ======================================================== */
+:root {
+    --bg-1: #140f1e;
+    --bg-2: #1e1730;
+    --bg-3: #29213d;
+    --panel: rgba(26, 21, 37, 0.88);
+    --panel-strong: #201a2f;
+    --purple-900: #f5efff;
+    --purple-800: #dbcdfd;
+    --purple-700: #bfa7ff;
+    --purple-600: #9b7af7;
+    --purple-500: #8869eb;
+    --purple-300: #7258b8;
+    --text: #e6deef;
+    --muted: #b9afc9;
+    --line: rgba(174, 149, 255, 0.22);
+    --shadow: rgba(6, 4, 10, 0.4);
+    --button-text: #f4eff8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================================
+   Fondo y layout general
+   ======================================================== */
+body {
+    min-height: 100vh;
+    padding: 28px 20px;
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top right, rgba(141, 113, 235, 0.22), transparent 24%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+}
+
+main {
+    width: min(980px, 100%);
+    margin: 0 auto;
+}
+
+/* ========================================================
+   Header y navegación del admin
+   ======================================================== */
+header {
+    margin-bottom: 28px;
+    padding: 24px 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(17, 13, 25, 0.55);
+    box-shadow: 0 18px 34px var(--shadow);
+}
+
+header h1 {
+    margin-bottom: 18px;
+    color: var(--purple-900);
+    font-size: clamp(1.5rem, 2.3vw, 2.3rem);
+    line-height: 1.2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+.logo {
+    color: var(--purple-800);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+}
+
+.nav-links a {
+    display: inline-block;
+    padding: 10px 14px;
+    color: var(--purple-800);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(122, 92, 201, 0.08);
+    transform: translateY(-1px);
+}
+
+/* El acceso y el conteo del carrito se mantienen visibles en el panel. */
+.nav-links .enlace-carrito {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.contador-carrito {
+    display: inline-grid;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--purple-800);
+    color: #20182e;
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+/* ========================================================
+   Sección principal y paneles de acciones
+   ======================================================== */
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+article {
+    flex: 1 1 300px;
+    padding: 28px 24px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(30, 24, 42, 0.94), rgba(18, 15, 27, 0.9));
+    box-shadow: 0 20px 36px var(--shadow);
+}
+
+article h2 {
+    margin-bottom: 12px;
+    color: var(--purple-800);
+    font-size: 1.35rem;
+}
+
+article p {
+    margin-bottom: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ========================================================
+   Formulario de opciones CRUD y botones
+   ======================================================== */
+select,
+button {
+    width: 100%;
+    border-radius: 12px;
+    font: inherit;
+}
+
+select {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 1.5px solid rgba(163, 137, 255, 0.35);
+    background: #171321;
+    color: #d8cde4;
+    outline: none;
+}
+
+select option {
+    background: #171321;
+    color: #d8cde4;
+}
+
+button {
+    padding: 13px 16px;
+    border: none;
+    background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+    color: var(--button-text);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    box-shadow: 0 10px 20px rgba(118, 86, 214, 0.2);
+    transform: translateY(-1px);
+}
+
+/* ========================================================
+   Contenido dinámico del panel
+   ======================================================== */
+#contenido {
+    flex: 1 1 420px;
+    min-height: 260px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(22, 17, 31, 0.94);
+    color: var(--text);
+}
+
+#contenido input,
+#contenido textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(174, 149, 255, 0.3);
+    border-radius: 8px;
+    background: #171321;
+    color: #e6deef;
+    font: inherit;
+}
+
+#contenido table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #d8cde4;
+}
+
+#contenido th {
+    color: #cbbbe0;
+    background: #211a30;
+}
+
+#contenido th,
+#contenido td {
+    padding: 8px;
+    border-color: rgba(174, 149, 255, 0.2);
+}
+
+#contenido > * {
+    margin-bottom: 12px;
+}
+
+/* ========================================================
+   Footer del panel admin
+   ======================================================== */
+@media (max-width: 700px) {
+    header {
+        padding: 18px 14px 16px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    section {
+        flex-direction: column;
+    }
+
+    article,
+    #contenido {
+        width: 100%;
+    }
+}
+
+.site-footer {
+    width: min(1120px, calc(100% - 48px));
+    margin: 28px auto;
+    padding: 20px 22px 12px;
+    border: 1px solid rgba(130, 100, 220, 0.25);
+    border-radius: 14px;
+    background: rgba(18, 15, 23, 0.82);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.footer-column h3 {
+    margin: 0 0 8px;
+    color: #d9c7ff;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.footer-column p,
+.footer-column li {
+    margin: 0;
+    color: #d2c8ea;
+    line-height: 1.5;
+    font-size: 0.82rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column li + li {
+    margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+    .site-footer {
+        width: min(100% - 24px, 560px);
+        padding: 16px 14px 10px;
+    }
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.socials a {
+    color: var(--purple-800);
+    text-decoration: none;
+    background: rgba(154, 122, 247, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}
+
+.footer-bottom {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+@media (max-width: 700px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
